@@ -10,10 +10,6 @@ return {
 		config = true,
 	},
 	{
-		"neoclide/coc.nvim",
-		branch = "release",
-	},
-	{
 		"lewis6991/gitsigns.nvim",
 	},
 	{
