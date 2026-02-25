@@ -1,38 +1,27 @@
- return {
-  {
-		"mason-org/mason.nvim",
-		opts = {
-			ui = {
-				icons = {
-					package_installed = "✓",
-					package_pending = "➜",
-					package_uninstalled = "✗",
-				},
-			},
+return {
+	{
+		"VonHeikemen/lsp-zero.nvim",
+		branch = "v1.x",
+		dependencies = {
+			-- LSP Support
+			{ "neovim/nvim-lspconfig" },
+			{ "williamboman/mason.nvim" },
+			{ "williamboman/mason-lspconfig.nvim" },
+
+			-- Autocompletion
+			{ "hrsh7th/nvim-cmp" },
+			{ "hrsh7th/cmp-nvim-lsp" },
+			{ "hrsh7th/cmp-buffer" },
+			{ "hrsh7th/cmp-path" },
+			{ "saadparwaiz1/cmp_luasnip" },
+			{ "hrsh7th/cmp-nvim-lua" },
+
+			-- Snippets
+			{ "L3MON4D3/LuaSnip" },
+			{ "rafamadriz/friendly-snippets" },
 		},
 	},
 	{
-		"mason-org/mason-lspconfig.nvim",
-		dependecies = { "neovim/nvim-lspconfig" },
-	},
-	{
 		"stevearc/conform.nvim",
-		config = function()
-			require("conform").setup({
-				formatters_by_ft = {
-					lua = { "stylua" },
-					python = { "black" },
-					javascript = { "prettier" },
-					typescript = { "prettier" },
-					html = { "prettier" },
-					css = { "prettier" },
-					json = { "prettier" },
-				},
-			})
-
-			vim.keymap.set("n", "<leader>f", function()
-				require("conform").format({ async = true })
-			end, { desc = "Format file" })
-		end,
 	},
- }
+}

@@ -1,9 +1,9 @@
 return {
-	{
-		"folke/tokyonight.nvim",
-		lazy = false,
-		priority = 1000,
-	},
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    priority = 1001
+  },
 	{
 		"nvim-tree/nvim-web-devicons",
 	},
@@ -30,8 +30,7 @@ return {
 	{
 		"luxvim/nvim-luxterm",
 	},
-	{
-		"gisketch/triforce.nvim",
-		dependencies = { "nvzone/volt" },
-	},
+  {
+    "sethen/line-number-change-mode.nvim",
+  }
 }
