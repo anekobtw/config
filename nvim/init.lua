@@ -27,6 +27,7 @@ vim.keymap.set({ "n", "i" }, "<C-s>", function()
 end, { silent = true })
 
 vim.keymap.set("n", "<C-b>", "<cmd>NvimTreeToggle<CR>", { silent = true })
+vim.keymap.set("n", "<leader>p", vim.diagnostic.open_float, { desc = "Open diagnostic float" })
 
 -- ========= TERMINAL =========
 require("luxterm").setup({
@@ -103,6 +104,8 @@ cmp.setup({
 -- ========= FORMATTER =========
 require("conform").setup({
 	formatters_by_ft = {
+		c = { "clang-format" },
+		cpp = { "clang-format" },
 		lua = { "stylua" },
 		python = { "black", "isort" },
 		javascript = { "prettier" },
