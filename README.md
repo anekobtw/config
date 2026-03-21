@@ -1,13 +1,28 @@
 # config
 
+Clone the repo
+```
+git clone https://github.com/anekobtw/config.git
+cd config
+```
+
+Install scoop first:
+
+```
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
+```
+
 ## Terminal and font
 
 - Terminal: [Windows Terminal](https://github.com/microsoft/terminal)
 - Font: [Maple Mono Nerd Font](https://github.com/subframe7536/maple-font)
 
-Install Maple Mono via Scoop:
+
+Install Maple Mono:
 
 ```
+scoop install git
 scoop bucket add nerd-fonts
 scoop install Maple-Mono-NF
 ```
@@ -25,14 +40,14 @@ scoop install Maple-Mono-NF
 ### Install
 
 ```
-git clone https://github.com/anekobtw/nvim-config.git
-cd nvim-config
+scoop install neovim
 Copy-Item -Recurse -Force .\nvim "$env:LOCALAPPDATA\nvim"
 ```
 
 ## VS Code setup
 
 ```
+git clone https://github.com/anekobtw/nvim-config.git
 Copy-Item -Force .\vscode\settings.json "$env:APPDATA\Code\User\settings.json"
 Get-Content .\vscode\extensions.txt | ForEach-Object { code --install-extension $_ }
 ```
