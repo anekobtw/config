@@ -17,7 +17,7 @@ vim.opt.completeopt = "menuone,noselect"
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
-vim.cmd.colorscheme("catppuccin-mocha")
+vim.cmd.colorscheme("catppuccin-macchiato")
 
 -- ========= KEYMAPS =========
 vim.keymap.set({ "n", "i" }, "<C-s>", function()
