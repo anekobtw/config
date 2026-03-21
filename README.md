@@ -9,7 +9,7 @@
 
 Install Maple Mono via Scoop:
 
-```powershell
+```bash
 scoop bucket add nerd-fonts
 scoop install Maple-Mono-NF
 ```
@@ -40,7 +40,7 @@ Configured formatters:
 
 #### Install
 
-```powershell
+```bash
 git clone https://github.com/anekobtw/nvim-config.git
 cd nvim-config
 Copy-Item -Recurse -Force .\nvim "$env:LOCALAPPDATA\nvim"
@@ -48,7 +48,7 @@ Copy-Item -Recurse -Force .\nvim "$env:LOCALAPPDATA\nvim"
 
 ### VS Code setup
 
-```powershell
+```bash
 Copy-Item -Force .\vscode\settings.json "$env:APPDATA\Code\User\settings.json"
 Get-Content .\vscode\extensions.txt | ForEach-Object { code --install-extension $_ }
 ```
