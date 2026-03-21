@@ -42,7 +42,7 @@ require("luxterm").setup({
 
 -- ========= STATUSLINE =========
 require("lualine").setup({
-	options = { theme = "catppuccin" },
+	options = { theme = "catppuccin-macchiato" },
 	sections = {
 		lualine_a = { "mode" },
 		lualine_b = {},
