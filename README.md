@@ -1,17 +1,18 @@
 # config
 
+## Install scoop and git
+
+```
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
+scoop install git
+```
+
 ## Clone the repo
 
 ```
 git clone https://github.com/anekobtw/config.git
 cd config
-```
-
-## Install scoop
-
-```
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
 ```
 
 ## Terminal and font
@@ -26,7 +27,6 @@ Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
   - **Installing font**
 
     ```
-    scoop install git
     scoop bucket add nerd-fonts
     scoop install Maple-Mono-NF
     ```
