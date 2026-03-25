@@ -1,6 +1,6 @@
 # config
 
-## Install scoop and git
+### Install scoop and git
 
 ```
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
@@ -8,7 +8,7 @@ Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
 scoop install git
 ```
 
-## Clone the repo
+### Clone the repo
 
 ```
 git clone https://github.com/anekobtw/config.git
@@ -17,21 +17,20 @@ cd config
 
 ## Terminal and font
 
-- **Font**\
-  Maple Mono Nerd Font\
-  https://github.com/subframe7536/maple-font
-  - **Installing font**
+- **Font - Maple Mono Nerd Font**
+  ```
+  scoop bucket add nerd-fonts
+  scoop install Maple-Mono-NF
+  ```
 
-    ```
-    scoop bucket add nerd-fonts
-    scoop install Maple-Mono-NF
-    ```
-
-- **Terminal**\
-  Windows Terminal\
+- **Terminal - Windows Terminal**\
   https://github.com/microsoft/terminal
-
-  All the settings are located in `terminalsettings.json`
+  
+  - **Install config**
+    
+    ```
+    Copy-Item -Force terminal/settings.json "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"
+    ```
 
 ## Neovim
 
@@ -39,11 +38,11 @@ cd config
 scoop install neovim
 Copy-Item -Recurse -Force .\nvim\* "$env:LOCALAPPDATA\nvim"
 
-# required for lsp
 scoop install nodejs
-node -v
-npm -v
-nvim +"MasonInstall pyright typescript-language-server" +qall
+scoop install stylua
+npm install -g prettier
+npm install -g vscode-langservers-extracted
+nvim +"MasonInstall pyright clangd cssls stylua" +qall
 ```
 
 ## VS Code setup
