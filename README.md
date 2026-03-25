@@ -17,10 +17,6 @@ cd config
 
 ## Terminal and font
 
-- **Terminal**\
-  Windows Terminal\
-  https://github.com/microsoft/terminal
-
 - **Font**\
   Maple Mono Nerd Font\
   https://github.com/subframe7536/maple-font
@@ -30,6 +26,12 @@ cd config
     scoop bucket add nerd-fonts
     scoop install Maple-Mono-NF
     ```
+
+- **Terminal**\
+  Windows Terminal\
+  https://github.com/microsoft/terminal
+
+  All the settings are located in `terminalsettings.json`
 
 ## Neovim
 
