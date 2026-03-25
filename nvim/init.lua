@@ -73,11 +73,13 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 vim.lsp.config("pyright", { capabilities = capabilities })
 vim.lsp.config("clangd", { capabilities = capabilities })
-vim.lsp.config("ts_ls", { capabilities = capabilities })
+vim.lsp.config("csslsp", { capabilities = capabilities })
+vim.lsp.config("stylua", { capabilities = capabilities })
 
 vim.lsp.enable("pyright")
 vim.lsp.enable("clangd")
-vim.lsp.enable("ts_ls")
+vim.lsp.enable("csslsp")
+vim.lsp.enable("stylua")
 
 -- ========= AUTOCOMPLETE =========
 local cmp = require("cmp")
