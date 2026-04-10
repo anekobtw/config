@@ -64,22 +64,59 @@ require("nvim-tree").setup({
 
 -- ========= MASON =========
 require("mason").setup()
+local servers = {
+	"bashls",
+	"clangd",
+	"cssls",
+	"dockerls",
+	"html",
+	"jsonls",
+	"lua_ls",
+	"marksman",
+	"pyright",
+	"rust_analyzer",
+	"ts_ls",
+	"yamlls",
+}
+
 require("mason-lspconfig").setup({
-	ensure_installed = { "pyright", "clangd", "ts_ls", "stylua" },
+	ensure_installed = servers,
+})
+
+local tools = {
+	"black",
+	"clang-format",
+	"isort",
+	"prettierd",
+	"shfmt",
+	"stylua",
+}
+
+require("mason-tool-installer").setup({
+	ensure_installed = tools,
+	auto_update = false,
+	run_on_start = true,
 })
 
 -- ========= LSP + CMP =========
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-vim.lsp.config("pyright", { capabilities = capabilities })
-vim.lsp.config("clangd", { capabilities = capabilities })
-vim.lsp.config("csslsp", { capabilities = capabilities })
-vim.lsp.config("stylua", { capabilities = capabilities })
+for _, server in ipairs(servers) do
+	vim.lsp.config(server, {
+		capabilities = capabilities,
+	})
+	vim.lsp.enable(server)
+end
 
-vim.lsp.enable("pyright")
-vim.lsp.enable("clangd")
-vim.lsp.enable("csslsp")
-vim.lsp.enable("stylua")
+vim.lsp.config("lua_ls", {
+	capabilities = capabilities,
+	settings = {
+		Lua = {
+			diagnostics = { globals = { "vim" } },
+			workspace = { checkThirdParty = false },
+		},
+	},
+})
 
 -- ========= AUTOCOMPLETE =========
 local cmp = require("cmp")
@@ -100,22 +137,37 @@ cmp.setup({
 		{ name = "nvim_lsp" },
 		{ name = "luasnip" },
 		{ name = "buffer" },
+		{ name = "path" },
+	},
+})
+
+cmp.setup.cmdline(":", {
+	mapping = cmp.mapping.preset.cmdline(),
+	sources = {
+		{ name = "path" },
+		{ name = "cmdline" },
 	},
 })
 
 -- ========= FORMATTER =========
+local formatters_by_ft = {
+	bash = { "shfmt" },
+	c = { "clang-format" },
+	cpp = { "clang-format" },
+	lua = { "stylua" },
+	markdown = { "prettierd", "prettier" },
+	python = { "black", "isort" },
+	rust = { "rustfmt" },
+	javascript = { "prettier" },
+	typescript = { "prettier" },
+	html = { "prettier" },
+	css = { "prettier" },
+	json = { "prettier" },
+	yaml = { "prettier" },
+}
+
 require("conform").setup({
-	formatters_by_ft = {
-		c = { "clang-format" },
-		cpp = { "clang-format" },
-		lua = { "stylua" },
-		python = { "black", "isort" },
-		javascript = { "prettier" },
-		typescript = { "prettier" },
-		html = { "prettier" },
-		css = { "prettier" },
-		json = { "prettier" },
-	},
+	formatters_by_ft = formatters_by_ft,
 })
 
 vim.keymap.set("n", "<leader>f", function()
